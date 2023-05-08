@@ -1,58 +1,63 @@
-# create-svelte
+# Svelte Scaled View Library
 
-Everything you need to build a Svelte library, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+Svelte Scaled View provides a component called "ScaledView" that allows you to scale the content within it to fit its parent element using one of three strategies (contain, cover, and fill). It also allows you to clamp the scale ratio using an optional min and max prop.
 
-Read more about creating a library [in the docs](https://kit.svelte.dev/docs/packaging).
+## Usage
 
-## Creating a project
+### Install
 
-If you're seeing this, you've probably already done this step. Congrats!
+First, install the library in your Svelte project from npm:
 
 ```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
+npm install svelte-scaled-view
 ```
 
-## Developing
+### Include
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Then, add it to your project:
 
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+```typescript
+import ScaledView from 'svelte-scaled-view
 ```
 
-Everything inside `src/lib` is part of your library, everything inside `src/routes` can be used as a showcase or preview app.
+### Basic
 
-## Building
+Once included, you can now use the ScaledView component in your project:
 
-To build your library:
-
-```bash
-npm run package
+```svelte
+<div class="container_with_a_non_zero_size">
+	<ScaledView fit="contain">
+		<div>My content to be scaled</div>
+	</ScaledView>
+</div>
 ```
 
-To create a production version of your showcase app:
+In the above example, the `fit` prop is set to `contain`, which will scale the content to fit the parent element while maintaining its aspect ratio.
 
-```bash
-npm run build
+You can also choose to use other scaling methods like `cover` and `fill`:
+
+```svelte
+<ScaledView fit="cover">
+	<div>My content to be scaled</div>
+</ScaledView>
 ```
 
-You can preview the production build with `npm run preview`.
+In this case, the content will be scaled to cover its parent element while maintaining of aspect ratio.
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+Or you can use `fill` to scale the content to fill its parent element, regardless of aspect ratio:
 
-## Publishing
+```svelte
+<ScaledView fit="fill">
+	<div>My content to be scaled</div>
+</ScaledView>
+```
 
-Go into the `package.json` and give your package the desired name through the `"name"` option. Also consider adding a `"license"` field and point it to a `LICENSE` file which you can create from a template (one popular option is the [MIT license](https://opensource.org/license/mit/)).
+### Advanced
 
-To publish your library to [npm](https://www.npmjs.com):
+You may also pass in a `min` and `max` value to set a minimum and maximum scale ratio.
 
-```bash
-npm publish
+```svelte
+<ScaledView fit="contain" min={0.5} max={2}>
+	<div>My content to be scaled</div>
+</ScaledView>
 ```
