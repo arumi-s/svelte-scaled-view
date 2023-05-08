@@ -1,5 +1,8 @@
 # Svelte Scaled View Library
 
+[![NPM](https://img.shields.io/npm/v/svelte-scaled-view)](https://www.npmjs.com/package/svelte-scaled-view)
+![License](https://img.shields.io/npm/l/svelte-scaled-view)
+
 Svelte Scaled View provides a component called "ScaledView" that allows you to scale the content within it to fit its parent element using one of three strategies (contain, cover, and fill). It also allows you to clamp the scale ratio using an optional min and max prop.
 
 ## Usage
