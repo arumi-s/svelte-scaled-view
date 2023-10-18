@@ -101,7 +101,7 @@
 			scaleX === scaleY ? scaleX : `${scaleX},${scaleY}`
 		}) translate(-50%,-50%)`}
 	>
-		<slot />
+		<slot {scaleX} {scaleY} />
 	</div>
 </div>
 
