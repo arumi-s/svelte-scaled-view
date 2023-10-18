@@ -20,7 +20,7 @@ npm install svelte-scaled-view
 Then, add it to your project:
 
 ```typescript
-import ScaledView from 'svelte-scaled-view
+import ScaledView from 'svelte-scaled-view';
 ```
 
 ### Basic
@@ -63,4 +63,14 @@ You may also pass in a `min` and `max` value to set a minimum and maximum scale 
 <ScaledView fit="contain" min={0.5} max={2}>
 	<div>My content to be scaled</div>
 </ScaledView>
+```
+
+Retrieve the scale factors.
+
+```svelte
+<div class="container_with_a_non_zero_size">
+	<ScaledView fit="contain" let:scaleX let:scaleY>
+		<div>this element is scaled by x:{scaleX} and y:{scaleY}</div>
+	</ScaledView>
+</div>
 ```
