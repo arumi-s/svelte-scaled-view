@@ -4,6 +4,11 @@
 	function printScale(x: number, y: number) {
 		return `${x.toFixed(2)} x ${y.toFixed(2)}`;
 	}
+
+	let bindWidth = '400px';
+	let bindHeight = '300px';
+	let bindScaleX = 0;
+	let bindScaleY = 0;
 </script>
 
 <svelte:head>
@@ -165,6 +170,30 @@
 					<div class="content" style:width="160px" style:height="90px">
 						{printScale(scaleX, scaleY)}
 					</div>
+				</ScaledView>
+			</div>
+		</div>
+	</div>
+</div>
+
+<h2>Bind Scale</h2>
+
+<div class="demos">
+	<div class="demo">
+		<h3>
+			fit="fill" <span id="bind-1-scale">{printScale(bindScaleX, bindScaleY)}</span>
+			<button
+				id="bind-1-resize"
+				on:click={() => {
+					[bindWidth, bindHeight] = [bindHeight, bindWidth];
+				}}>resize</button
+			>
+		</h3>
+
+		<div class="examples">
+			<div id="bind-1" class="parent" style:width={bindWidth} style:height={bindHeight}>
+				<ScaledView fit="fill" bind:scaleX={bindScaleX} bind:scaleY={bindScaleY}>
+					<div class="content" style:width="160px" style:height="90px" />
 				</ScaledView>
 			</div>
 		</div>

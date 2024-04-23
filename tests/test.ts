@@ -39,3 +39,12 @@ test('ScaledView with fit="contain" and min="1" max="2" are correctly scaled', a
 	await expect(page.locator('#clamped-2')).toHaveText('1.88 x 1.88');
 	await expect(page.locator('#clamped-3')).toHaveText('1.00 x 1.00');
 });
+
+test('ScaledView can export scaleX and scaleY correctly', async ({ page }) => {
+	await page.goto('/');
+	await expect(page.locator('#bind-1-scale')).toHaveText('2.50 x 3.33');
+	await page.locator('#bind-1-resize').click();
+	await expect(page.locator('#bind-1-scale')).toHaveText('1.88 x 4.44');
+	await page.locator('#bind-1-resize').click();
+	await expect(page.locator('#bind-1-scale')).toHaveText('2.50 x 3.33');
+});

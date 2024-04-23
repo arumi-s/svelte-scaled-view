@@ -13,8 +13,8 @@
 	let contentOffsetWidth = 0;
 	let contentOffsetHeight = 0;
 
-	let scaleX = 1;
-	let scaleY = 1;
+	export let scaleX = 1;
+	export let scaleY = 1;
 
 	let RO: ResizeObserver;
 
