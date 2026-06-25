@@ -1,3 +1,1 @@
-import ScaledView from './ScaledView.svelte';
-
-export { ScaledView };
+export { ScaledView } from './scaled-view/index.js';
