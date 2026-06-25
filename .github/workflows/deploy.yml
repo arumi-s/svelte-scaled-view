@@ -30,7 +30,7 @@ jobs:
         uses: pnpm/action-setup@v4
 
       - name: Install deps
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
 
       # Runs a set of commands using the runners shell
       - name: Build and Test
