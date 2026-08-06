@@ -9,10 +9,10 @@ importers:
   .:
     dependencies:
       runed:
-        specifier: '>=0.35.0'
+        specifier: 0.37.1
         version: 0.37.1(@sveltejs/kit@2.63.0(@sveltejs/vite-plugin-svelte@7.1.2(svelte@5.56.2(@typescript-eslint/types@8.60.1))(vite@8.0.16(@types/node@22.19.20)))(svelte@5.56.2(@typescript-eslint/types@8.60.1))(typescript@6.0.3)(vite@8.0.16(@types/node@22.19.20)))(svelte@5.56.2(@typescript-eslint/types@8.60.1))
       svelte-toolbelt:
-        specifier: '>=0.8.0'
+        specifier: ^0.10.6
         version: 0.10.6(@sveltejs/kit@2.63.0(@sveltejs/vite-plugin-svelte@7.1.2(svelte@5.56.2(@typescript-eslint/types@8.60.1))(vite@8.0.16(@types/node@22.19.20)))(svelte@5.56.2(@typescript-eslint/types@8.60.1))(typescript@6.0.3)(vite@8.0.16(@types/node@22.19.20)))(svelte@5.56.2(@typescript-eslint/types@8.60.1))
     devDependencies:
       '@eslint/js':
