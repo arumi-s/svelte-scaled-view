@@ -1,37 +1,45 @@
 name: CI
 
 on:
-  push:
-    branches: [master]
-  pull_request:
-    branches: [master]
+  release:
+    types: [created]
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: cd-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
-  test:
-    if: "!contains(github.event.head_commit.message, 'skip-ci')"
+  publish:
+    runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest]
-        node-version: [22.x, 24.x]
-
-    runs-on: ${{ matrix.os }}
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: '24'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Update npm for Trusted Publishing
+        run: npm install -g npm@latest
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
 
-      - name: Install deps
+      - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      # Runs a set of commands using the runners shell
-      - name: Build and Test
-        run: pnpm test
+      - name: Build
+        run: pnpm build
+
+      - name: Strip dependencies for publish
+        run: jq 'del(.dependencies)' package.json > package.json.tmp && mv package.json.tmp package.json
+
+      - name: Publish to npm
+        run: npm publish --provenance --access public

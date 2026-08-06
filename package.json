@@ -1,6 +1,6 @@
 {
 	"name": "svelte-scaled-view",
-	"version": "4.0.0",
+	"version": "4.1.0",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build && npm run prepack",
@@ -32,6 +32,11 @@
 			"svelte": "./dist/index.js"
 		}
 	},
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/arumi-s/svelte-scaled-view.git"
+	},
 	"peerDependencies": {
 		"svelte": "^5.0.0",
 		"runed": ">=0.35.0",
@@ -58,6 +63,10 @@
 		"typescript-eslint": "^8.58.1",
 		"vite": "^8.0.7",
 		"vitest": "^4.1.3"
+	},
+	"dependencies": {
+		"runed": "0.35.1",
+		"svelte-toolbelt": "^0.10.6"
 	},
 	"keywords": [
 		"svelte"
